@@ -1,6 +1,6 @@
 ---
 name: bitget-wallet-partner
-version: "2026.3.10-2"
+version: "2026.3.10-3"
 updated: "2026-03-10"
 description: "Bitget Wallet API integration guide and troubleshooting assistant. Helps partners resolve issues when integrating Swap Order, Market Data, and Token APIs — provides answers, code examples, and solutions."
 ---
@@ -21,6 +21,7 @@ This skill covers three API modules with complete integration documentation:
 
 | Module | Doc | Purpose |
 |--------|-----|---------|
+| Authentication | `docs/authentication.md` | API Key setup, HMAC signing, IP whitelist, code examples |
 | Swap Order | `docs/swap-order.md` | Same-chain/cross-chain swaps, gasless transactions, signing, submission |
 | Market Data | `docs/market-data.md` | K-line, transaction stats, batch queries |
 | Token | `docs/token.md` | Token info, rankings, liquidity, security audits |
@@ -43,6 +44,7 @@ When encountering these keywords, refer to the corresponding doc section:
 
 | Keyword | Reference |
 |---------|-----------|
+| API Key, authentication, HMAC, 403 | `docs/authentication.md` → Authentication |
 | Signature failed, hash mismatch | `docs/swap-order.md` → Signing |
 | gasless, no_gas, EIP-7702 | `docs/swap-order.md` → Gasless Transactions |
 | Cross-chain failed, refund | `docs/swap-order.md` → Order Status & Refunds |

@@ -14,17 +14,27 @@ When partners encounter issues integrating Bitget Wallet APIs, this skill provid
 
 | Module | Doc | Core Capabilities |
 |--------|-----|-------------------|
+| [Authentication](docs/authentication.md) | auth | API Key setup, HMAC-SHA256 signing, IP whitelist, code examples (Python/Node/Go/Java) |
 | [Swap Order](docs/swap-order.md) | swap-order | Same-chain/cross-chain swaps, Gasless (EIP-7702), signing, order tracking |
 | [Market Data](docs/market-data.md) | market-data | K-line (9 periods), transaction stats (buy/sell breakdown), batch queries |
 | [Token](docs/token.md) | token | Token info, rankings, liquidity, security audit (full labelName mapping) |
 
+## Getting Started
+
+1. **Get credentials** — Contact your Bitget Wallet integration representative for your API Key + Secret
+2. **Set up authentication** — Follow [authentication.md](docs/authentication.md) to implement HMAC signing
+3. **Whitelist IPs** — Provide your server IPs to your representative
+4. **Start integrating** — Use test credentials for development, switch to production when ready
+
+> Test credentials (2 QPS, no whitelist needed): see [authentication.md](docs/authentication.md#testing-credentials)
+
 ## Quick Links
 
 - [Official API Docs](https://web3.bitget.com/zh-CN/docs)
+- [Authentication](https://web3.bitget.com/zh-CN/docs/authentication/)
 - [Swap Order API](https://web3.bitget.com/zh-CN/docs/swap-order)
 - [Market Data API](https://web3.bitget.com/zh-CN/docs/market/market-price)
 - [Token API](https://web3.bitget.com/zh-CN/docs/market/token)
-- [Authentication](https://web3.bitget.com/zh-CN/docs/authentication/)
 
 ## Supported Chains
 
