@@ -130,12 +130,24 @@ Same response structure as getBaseInfo, wrapped in `data.list` array.
 | lockedLpPercent | Lock percentage |
 | pools[] | Pool list |
 | pools[].poolAddr | Pool address |
+| pools[].poolSymbol | Pool symbol |
 | pools[].protocol | Protocol name |
-| pools[].totalUsd | Pool value |
+| pools[].protocolAddress | Protocol factory contract address |
+| pools[].protocolIcon | Protocol logo URL |
+| pools[].totalUsd | Pool value (formatted, e.g., "$97,825,674") |
 | pools[].token0Symbol / token1Symbol | Token pair symbols |
-| pools[].reserve0 / reserve1 | Token reserves |
-| pools[].priceRate | Exchange rate |
+| pools[].token0Contract / token1Contract | Token pair contract addresses |
+| pools[].reserve0 / reserve1 | Token reserves (formatted) |
+| pools[].priceRate | Exchange rate (e.g., "1:827.155") |
+| pools[].priceRateText | Exchange rate label (e.g., "SOL : SLERF") |
+| pools[].token0Icon / token1Icon | Token icon URLs |
 | activities[] | Recent add/remove liquidity events |
+| activities[].side | `"add"` or `"remove"` |
+| activities[].token0Symbol / token1Symbol | Token pair symbols |
+| activities[].amount0 / amount1 | Token amounts (negative for remove) |
+| activities[].time | Relative time (e.g., "14s ago") |
+| activities[].transactionHash | Transaction hash |
+| activities[].transactionUrl | Block explorer URL |
 
 ---
 
