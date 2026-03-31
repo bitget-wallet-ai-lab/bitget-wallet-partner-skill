@@ -50,7 +50,7 @@ Get a price estimate without building a transaction.
 | fromAddress | string | ❌ | Sender address (needed if `estimateGas: true`) |
 | estimateGas | bool | ❌ | Whether to estimate gas (default false) |
 | market | string | ❌ | Specify market (e.g., "uniswap.v3"). Default: all markets |
-| feeRate | number | ❌ | Fee rate in permille. Default: channel config. Pass 0 for no fee |
+| feeRate | number | ❌ | Fee rate as decimal ratio (0.05 = 5%). Default: channel config. Pass 0 for no fee |
 | solMaxAccounts | number | ❌ | Max SOL accounts (limits route complexity, may affect price) |
 
 **Request Example**
@@ -104,7 +104,7 @@ Build a swap transaction. Returns calldata for EVM or serialized instructions fo
 | toSymbol | string | ❌ | Destination token symbol |
 | slippage | number | ❌ | Slippage percentage (e.g., 1 = 1%). Default: system config |
 | toMinAmount | string | ❌ | Minimum output. If not set, calculated from slippage |
-| feeRate | number | ❌ | Fee rate in permille |
+| feeRate | number | ❌ | Fee rate as decimal ratio (0.05 = 5%) |
 | executorAddress | string | ❌ | If tx sender differs from fromAddress |
 | solMaxAccounts | number | ❌ | Max SOL accounts |
 | feePayer | string | ❌ | SOL: who pays for account creation fees |
@@ -121,6 +121,7 @@ Build a swap transaction. Returns calldata for EVM or serialized instructions fo
 | contract | string | Router contract address |
 | calldata | string | Transaction calldata (hex) |
 | deadline | number | Expiry in seconds |
+| computeUnits | number | Compute units (primarily for SOL; may appear in EVM responses but can be ignored) |
 
 **Response Fields (SOL)**
 
@@ -163,7 +164,7 @@ Combines quote + tx building in one call. Supports two modes:
 | requestMode | string | ✅ | — | `"exactIn"` or `"minAmountOut"` |
 | fromAddress | string | ✅ | — | Sender address |
 | toAddress | string | ✅ | — | Receiver address |
-| feeRate | float64 | ✅ | — | Fee rate (permille), must ≥ 0 |
+| feeRate | float64 | ✅ | — | Fee rate as decimal ratio (0.05 = 5%), must ≥ 0 |
 | slippage | string | ❌ | "0.5" | Slippage percentage |
 | deadline | int | ❌ | 600 | Expiry in seconds |
 | executorAddress | string | ❌ | — | If tx sender differs from fromAddress |
@@ -317,10 +318,12 @@ No. Instruction Mode is **same-chain only** (`fromChain == toChain`). Use Order 
 
 ### Q: How do I handle the feeRate parameter?
 
-`feeRate` is in **permille** (parts per thousand):
+`feeRate` is a **decimal ratio** representing the fee percentage:
 - `feeRate: 0` → no fee
-- `feeRate: 0.003` → 0.3% fee
+- `feeRate: 0.01` → 1% fee
 - `feeRate: 0.05` → 5% fee
+
+> Note: In the quote/swap endpoints, `feeRate` is a number. In swapr, it's the same semantic but typed as float64. If not set, the channel's default fee rate applies.
 
 ### Q: What happens if /swapr minAmountOut can't converge?
 
