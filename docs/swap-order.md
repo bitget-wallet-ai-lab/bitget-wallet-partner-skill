@@ -388,17 +388,17 @@ for (const sig of response.data.signatures) {
 
 ### Supported Chains and Thresholds
 
-| Chain | Code | noGas Minimum (USD) |
-|-------|------|---------------------|
-| Ethereum | eth | $5 |
-| Solana | sol | $5 |
-| BNB Chain | bnb | $5 |
-| Base | base | $5 |
-| Arbitrum | arbitrum | $5 |
-| Polygon | matic | $5 |
-| Morph | morph | $1 |
+| Chain | Code | Same-chain | Cross-chain | noGas Minimum (USD) |
+|-------|------|:----------:|:-----------:|---------------------|
+| Ethereum | eth | ✅ | ✅ | $5 |
+| Solana | sol | ✅ | ✅ | $5 |
+| BNB Chain | bnb | ✅ | ✅ | $5 |
+| Base | base | ✅ | ✅ | $5 |
+| Arbitrum | arbitrum | ✅ | ✅ | $5 |
+| Polygon | matic | ✅ | ✅ | $5 |
+| Morph | morph | ✅ | ✅ | $1 |
 
-When order amount (USD) ≥ threshold, `getSwapPrice` returns `"no_gas"` in `features`.
+When order amount (USD) ≥ noGas threshold, `getSwapPrice` returns `"no_gas"` in `features`.
 
 ### EIP-7702 Binding State
 
